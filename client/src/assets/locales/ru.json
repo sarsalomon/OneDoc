@@ -1,0 +1,41 @@
+{
+    "Admin": {
+        "pageTitle": "Admin oynasi"
+    },
+    "User": {
+        "pageTitle": "Foydalanuvchi oynasi"
+    },
+    "General": {
+        "Home": {
+            "Navbar": {
+                "login": "Вход",
+                "demo_button": "Попробоват ь"
+            },
+            "Hero": {
+                "text_one": "Услуга подписания контрактов",
+                "text_two": "Подписывайте контракты с клиентами, сотрудниками и подрядчиками по телефону всего в несколько кликов.",
+                "text_three": "Спасибо за внимание"
+            }
+        },
+        "Error": {
+            "authError": "Login noto'g'ri yozilgan"
+        },
+        "Auth": {
+            "pageTitle": "Вход",
+            "notRegister": "Нет аккаунта?",
+            "register": "Зарегистрироваться",
+            "phone": "Номер телефона",
+            "phonePlaceholder": "Введите номер телефона +998 ________",
+            "пароль": "Пароль",
+            "passwordPlaceholder": "Введите пароль...",
+            "remember": "Запомни меня",
+            "forget": "Забыли пароль?",
+            "button": "Войти"
+        },
+        "NotFound": {
+            "pageTitle": "Sahifa topilmadi",
+            "title": "Afsus, Siz qidirgan sahifa topilmadi",
+            "button": "Bosh sahifaga qaytish"
+        }
+    }
+}

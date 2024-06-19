@@ -1,0 +1,41 @@
+{
+    "Admin": {
+        "pageTitle": "Admin oynasi"
+    },
+    "User": {
+        "pageTitle": "Foydalanuvchi oynasi"
+    },
+    "General": {
+        "Home": {
+            "Navbar": {
+                "login": "Kirisiw",
+                "demo_button": "Ta'tib soqır"
+            },
+            "Hero": {
+                "text_one": "Shártnamalardı qol qoyıw xızmeti",
+                "text_two": "Klientler, xızmetkerler hám jalawshılar menen shártnamalardı bir neshe ret basıw arqalı telefon arqalı qol qoyń. ",
+                "text_three": "Itibar ushın raxmet"
+            }
+        },
+        "Error": {
+            "authError": "Login noto'g'ri yozilgan"
+        },
+        "Auth": {
+            "pageTitle": "Sistemaǵa kirisiw",
+            "notRegister": "Esap joqpa? ",
+            "register": "Dizimnen ótiw",
+            "phone": "Telefon nomer",
+            "phonePlaceholder": "Telefon nomer kriting +998 ________",
+            "password": "Parol",
+            "passwordPlaceholder": "Jasırın sózdi kiritiń...",
+            "remember": "Meni eslep qal",
+            "forget": "Paroldı unutdingizmi?",
+            "button": "Kirisiw"
+        },
+        "NotFound": {
+            "pageTitle": "Sahifa topilmadi",
+            "title": "Afsus, Siz qidirgan sahifa topilmadi",
+            "button": "Bosh sahifaga qaytish"
+        }
+    }
+}

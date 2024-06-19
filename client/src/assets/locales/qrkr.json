@@ -1,0 +1,41 @@
+{
+    "Admin": {
+        "pageTitle": "Admin oynasi"
+    },
+    "User": {
+        "pageTitle": "Foydalanuvchi oynasi"
+    },
+    "General": {
+        "Home": {
+            "Navbar": {
+                "login": "Кирисиў",
+                "demo_button": "Тəтиб соқыр"
+            },
+            "Hero": {
+                "text_one": "Шəртнамаларды қол қойыў хызмети",
+                "text_two": "Клиентлер, хызметкерлер ҳəм жалаўшылар менен шəртнамаларды бир неше рет басыў арқалы телефон арқалы қол қойң. ",
+                "text_three": "Итибар ушын рахмет"
+            }
+        },
+        "Error": {
+            "authError": "Login noto'g'ri yozilgan"
+        },
+        "Auth": {
+            "pageTitle": "Системаға кирисиў",
+            "notRegister": "Есап жоқпа? ",
+            "register": "Дизимнен өтиў",
+            "phone": "Телефон номер",
+            "phonePlaceholder": "Телефон номер критинг +998 ________",
+            "password": "Парол",
+            "passwordPlaceholder": "Жасырын сөзди киритиң...",
+            "remember": "Мени еслеп қал",
+            "forget": "Паролды унутдингизми?",
+            "button": "Кирисиў"
+        },
+        "NotFound": {
+            "pageTitle": "Sahifa topilmadi",
+            "title": "Afsus, Siz qidirgan sahifa topilmadi",
+            "button": "Bosh sahifaga qaytish"
+        }
+    }
+}

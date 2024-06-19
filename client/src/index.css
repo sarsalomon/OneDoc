@@ -1,0 +1,111 @@
+:root {
+    --first-color: #2bc3e0;
+    --second-color: #003e94; 
+}
+
+body {
+    background: red;
+    height: 29%;
+}
+
+.Navbar {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 997;
+}
+
+.topNavbar {
+    background-color: #242932;
+    padding: 10px 200px;
+    color: aliceblue;
+}
+
+.bottomNavbar {
+    background: #fff;
+}
+
+.Language_Switcher {
+    background: transparent;
+    color: #000000;
+    border: none;
+}
+
+.Demo_Button {
+    background-color: var(--first-color); 
+    background-image: linear-gradient(to right, var(--first-color) , var(--second-color));
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer; 
+}
+
+.hero {
+    background: #f2f2f7;
+    width: 100%;
+    min-height: 95vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* background: url(../img/hero-bg.png) top center no-repeat; */
+    background-size: cover;
+}
+
+.typedText {
+    color: #000000;
+    font-weight: 600;
+    font-size: 45px;
+    min-height: 300px;
+    max-height: 300px;
+    height: 300px;
+}
+
+.Slogan {
+    color: #000000;
+}
+
+.smartphone {
+    height: 500px;
+}
+
+.SmartphoneShadow {
+    width: 70%;
+    height: 100px;
+    background: var(--first-color);
+    border-radius: 50%;
+    box-shadow: 0 0 40px 50px var(--second-color);
+}
+
+.smartphone {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(15px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.Information {
+    min-height: 10vh;
+    height: 10vh;
+    border-top: #f3f3f3 1px dashed;
+    border-bottom: #f3f3f3 1px dashed;
+}
+
+.Information_text {
+    height: 100%;
+    border-right: #000000 2px solid;
+}
+
+
+.sidebar {
+    background-color: #f8f9fa;
+    height: 90.3vh; /* Adjust the height as per your requirement */
+    border-right: 1px solid #dee2e6; /* Optional border for sidebar */
+  }

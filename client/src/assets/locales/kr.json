@@ -1,0 +1,41 @@
+{
+    "Admin": {
+        "pageTitle": "Admin oynasi"
+    },
+    "User": {
+        "pageTitle": "Foydalanuvchi oynasi"
+    },
+    "General": {
+        "Home": {
+            "Navbar": {
+                "login": "Кириш",
+                "demo_button": "татиб кор"
+            },
+            "Hero": {
+                "text_one": "Шартномаларни имзолаш хизмати",
+                "text_two": "Мижозлар, ходимлар ва пудратчилар билан шартномаларни бир неча марта босиш орқали телефон орқали имзоланг.",
+                "text_three": "Еътибор учун раҳмат"
+            }
+        },
+        "Error": {
+            "authError": "Login noto'g'ri yozilgan"
+        },
+        "Auth": {
+            "pageTitle": "Тизимга кириш",
+            "notRegister": "Ҳисоб йўқми?",
+            "register": "Рўйхатдан ўтиш",
+            "phone": "Телефон рақам",
+            "phonePlaceholder": "Телефон рақам критинг +998 ________",
+            "password": "Парол",
+            "passwordPlaceholder": "Махфий сўзни киритинг...",
+            "remember": "Мени эслаб кол",
+            "forget": "Паролни унутдингизми?",
+            "button": "Кириш"
+        },
+        "NotFound": {
+            "pageTitle": "Sahifa topilmadi",
+            "title": "Afsus, Siz qidirgan sahifa topilmadi",
+            "button": "Bosh sahifaga qaytish"
+        }
+    }
+}

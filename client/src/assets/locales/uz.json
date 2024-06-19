@@ -1,0 +1,41 @@
+{
+    "Admin": {
+        "pageTitle": "Admin oynasi"
+    },
+    "User": {
+        "pageTitle": "Foydalanuvchi oynasi"
+    },
+    "General": {
+        "Home": {
+            "Navbar": {
+                "login": "Kirish",
+                "demo_button": "Ta'tib ko'r"
+            },
+            "Hero": {
+                "text_one": "Shartnomalarni imzolash xizmati",
+                "text_two": "Mijozlar, xodimlar va pudratchilar bilan shartnomalarni bir necha marta bosish orqali telefon orqali imzolang.",
+                "text_three": "E'tibor uchun rahmat"
+            }
+        },
+        "Error": {
+            "authError": "Login noto'g'ri yozilgan"
+        },
+        "Auth": {
+            "pageTitle": "Tizimga kirish",
+            "notRegister": "Hisob yo'qmi?",
+            "register": "Ro'yxatdan o'tish",
+            "phone": "Telefon raqam",
+            "phonePlaceholder": "Telefon raqam kriting +998 ________",
+            "password": "Parol",
+            "passwordPlaceholder": "Maxfiy so'zni kiriting...",
+            "remember": "Meni eslab qol",
+            "forget": "Parolni unutdingizmi?",
+            "button": "Kirish"
+        },
+        "NotFound": {
+            "pageTitle": "Sahifa topilmadi",
+            "title": "Afsus, Siz qidirgan sahifa topilmadi",
+            "button": "Bosh sahifaga qaytish"
+        }
+    }
+}
