@@ -1,4 +1,4 @@
-import { $authHost } from "./index";
+import { $authHost, $host } from "./index";
 
 export const fetchDataContract = async () =>{
     const { data } = await $authHost.post('api/contract/');
@@ -12,6 +12,26 @@ export const addDataContract = async (datas) =>{
 
 export const getDataContract = async (id) =>{
     const { data } = await $authHost.get('api/contract/get/' + id);
+    return data
+}
+
+export const getDatasContractById = async (id) =>{
+    const { data } = await $authHost.post('api/contract/fetchbyid/', {id});
+    return data
+}
+
+export const getDataCode = async (datas) =>{
+    const { data } = await $host.post('api/contract/getcode', datas);
+    return data
+}
+
+export const verifyDataCode = async (datas) =>{
+    const { data } = await $host.post('api/contract/verifycode', datas);
+    return data
+}
+
+export const verifyDataSignature = async (datas) =>{
+    const { data } = await $host.post('api/contract/verifysignature', datas);
     return data
 }
 

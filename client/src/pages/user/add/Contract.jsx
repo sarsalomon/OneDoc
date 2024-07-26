@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import UserDashboardNavbar from '../components/Navbar';
 import UserDashboardSideBar from '../components/SideBar';
 import UserDashboardFooter from '../components/Footer';
+import ContractOne from '../components/contracts/ContractOne';
 
 const Contract = observer(() => {
 
@@ -11,9 +12,9 @@ const Contract = observer(() => {
       <UserDashboardNavbar/>
       <Container fluid>
         <Row>
-          <UserDashboardSideBar/>
-          <Col xxl={11} xl={11} lg={11} md={11} sm={11} className="main-content">
-            Yaratish
+          {/* <UserDashboardSideBar/> */}
+          <Col xxl={12} xl={12} lg={12} md={12} sm={12} className="main-content">
+            <ContractOne/>
           </Col>
         </Row>
       </Container>

@@ -2,14 +2,17 @@ import { Container, Navbar, Nav, Dropdown, Button, NavDropdown } from 'react-boo
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 import { Context } from "../../../main";
-import { useNavigate } from "react-router-dom";
-import { HOME_ROUTE } from "../../../utils/consts";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { IoExitOutline } from "react-icons/io5";
 
+import { HOME_ROUTE, USER_DASHBOARD_ACCOUNT_ROUTE, USER_DASHBOARD_ROUTE } from "../../../utils/consts";
+
+
 const UserDashboardNavbar = observer(() => {
   const { user } = useContext(Context);
+  console.log(user)
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
@@ -37,14 +40,18 @@ const UserDashboardNavbar = observer(() => {
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="#home">OneDoc</Navbar.Brand>
+          <NavLink to={USER_DASHBOARD_ROUTE}>
+            <Navbar.Brand>
+              OneDoc
+            </Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto me-5">
               <NavDropdown title={user.user.name} id="basic-nav-dropdown">
-                <NavDropdown.Item>Action</NavDropdown.Item>
-                <NavDropdown.Item>Another action</NavDropdown.Item>
-                <NavDropdown.Item>Something</NavDropdown.Item>
+                <NavLink to={USER_DASHBOARD_ACCOUNT_ROUTE} className="dropdown-item">
+                  Sozlamalar
+                </NavLink>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={() => logOut()}>
                   <IoExitOutline />

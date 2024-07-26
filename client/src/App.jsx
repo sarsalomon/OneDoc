@@ -14,9 +14,9 @@ const App = observer( () => {
   useEffect(() => {
     check().then(data => {
       const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-          user.setTheme(JSON.parse(storedTheme));
-      }
+      // if (storedTheme) {
+      //     user.setTheme(JSON.parse(storedTheme));
+      // }
       user.setUser(data);
       user.setIsAuth(true);
     }).finally(() => setLoading(false));

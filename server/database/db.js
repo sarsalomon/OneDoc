@@ -6,11 +6,17 @@ const ContractTemplateSchema = new Schema({
     status: {type: Boolean}
 }, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
 
-
 const ContractSchema = new Schema({
+    userId: {type: String},
     title: {type: String},
     contractTemplateId: {type: String},
-    status: {type: Boolean}
+    contractObject: {type: String},
+    contractSubject: {type: String},
+    type: {type: String},
+    device: {type: String},
+    image: {type: String},
+    smsCode: {type: String},
+    status: {type: String}
 }, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
 
 const UserSchema = new Schema({
@@ -18,11 +24,14 @@ const UserSchema = new Schema({
     surname: {type: String},
     phone: {type: String},
     password: {type: String},
+    birthday: {type: String},
+    passport: {type: String},
     role: {type: String},
     activaCode: {type: String},
-    corporateName: {type: String},
-    corporateStir: {type: String},
-    corporateData: {type: String},
+    companyName: {type: String},
+    companySTIR: {type: String},
+    companyAddress: {type: String},
+    companyPhone: {type: String},
     money: {type: Number},
     status: {type: Boolean}
 }, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
