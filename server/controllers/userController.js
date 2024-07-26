@@ -4,57 +4,60 @@ const bcrypt   = require('bcrypt');
 const model    = require('../database/db');
 const { SendCode } = require("./SmsController");
 
-const generateJwt = (id, login, name, money, role) => {
+const generateJwt = (id, login, name, money, phone, companyName, companySTIR, companyAddress, companyPhone, role) => {
     return token = jwt.sign(
-        {id, login, name, money, role},
+        { id, login, name, money, phone, companyName, companySTIR, companyAddress, companyPhone, role },
         process.env.SECRET_KEY,
-        {expiresIn: '99d'}
+        { expiresIn: '99d' }
     )
 }
 
 class UserController {
     async registration(req, res, next) {
-        const { phone, password, role } = req.body;
+        const { name, surname, phone, password, whois } = req.body;
         
-        if (!phone && phone.lenght == 9) {
+        if (!name) {
             return next(ApiError.badRequest("Phone_error"));
+        } else if (!surname) {
+            return next(ApiError.badRequest("Password_error"));
+        } else if (!phone) {
+            return next(ApiError.badRequest("Password_error"));
         } else if (!password) {
+            return next(ApiError.badRequest("Password_error"));
+        } else if (!whois) {
             return next(ApiError.badRequest("Password_error"));
         }
 
         const condidate = await model.user.findOne({ phone });
 
         if (condidate) {
-            return next(ApiError.badRequest("User_exiting_error"));
+            return next(ApiError.badRequest("UserExitingError"));
         }
         
         let code = await SendCode();
-        console.log(code)
 
         const hashPassword = await bcrypt.hash(password, 5);
-        const user = await model.user.create({name: '', surname: '', phone, password: hashPassword, role: role, activaCode: code, corporateName: '', corporateStir: '', corporateDate: '', money: 0, status: false});
-        const token = generateJwt(user.id, user.login, `${user.name} ${user.surname}`, user.money, user.role);
+        const user = await model.user.create({ name, surname, phone, password: hashPassword, birthday: '', passport: '', role: whois, activaCode: code, companyName: '', companySTIR: '', companyAddress: '', companyPhone: '', money: 0, status: false });
+        const token = generateJwt(user.id, user.login, `${user.name} ${user.surname}`, user.money, user.phone, user.companyName, user.companySTIR, user.companyAddress, user.companyPhone, user.role);
         return res.json({token});
     }
 
     async login(req, res, next) {
         const { phone, password } = req.body;
-        console.log(req.body)
-
+        
         const user = await model.user.findOne({ phone });
-        console.log(user)
 
         if (!user) {
-            return next(ApiError.internal("User_erwww"));
+            return next(ApiError.internal("General:Auth:UserNotFoundError"));
         }
 
         let comparePassword = bcrypt.compareSync(password, user.password);
 
         if (!comparePassword) {
-            return next(ApiError.internal('User_error'));
+            return next(ApiError.internal('General:Auth:UserPasswordError'));
         }
 
-        const token = generateJwt(user.id, user.login, `${user.name} ${user.surname}`, user.money, user.role);
+        const token = generateJwt(user.id, user.login, `${user.name} ${user.surname}`, user.money, user.phone, user.companyName, user.companySTIR, user.companyAddress, user.companyPhone, user.role);
         return res.json({token});
     }
 
@@ -66,8 +69,34 @@ class UserController {
 
     }
 
+    async getUser (req, res, next) {
+        const { id } = req.params;
+        const getUser = await model.user.findById(id);
+        return res.json(getUser);
+    }
+
+    async updateUser (req, res, next) {
+        const { id, name, surname, birthday, passport } = req.body;
+        const updateUser = await model.user.findByIdAndUpdate(id, { name, surname, birthday, passport }, {new:true})
+        if (updateUser) {
+            return res.json("success");
+        } else {
+            return res.json("error");
+        }
+    }
+
+    async updateUserCompany (req, res, next) {
+        const { id, companyName, companySTIR, companyAddress, companyPhone } = req.body;
+        const updateCompany = await model.user.findByIdAndUpdate(id, { companyName, companySTIR, companyAddress, companyPhone }, {new:true})
+        if (updateCompany) {
+            return res.json("success");
+        } else {
+            return res.json("error");
+        }
+    }
+
     async check (req, res, next) {
-        const token = generateJwt(req.user.id, req.user.login, req.user.name, req.user.money, req.user.role);
+        const token = generateJwt(req.user.id, req.user.login, req.user.name, req.user.money, req.user.phone, req.user.companyName, req.user.companySTIR, req.user.companyAddress, req.user.companyPhone, req.user.role);
         return res.json({token});
     }
 }
