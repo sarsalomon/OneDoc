@@ -99,9 +99,9 @@ const updateCompanyInfo = async () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-      });
+        });
       } else {
-        toast.error("e.response.data.message", {
+        toast.error("e", {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,

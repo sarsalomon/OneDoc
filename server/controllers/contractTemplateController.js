@@ -11,7 +11,10 @@ class ContractTemplateController {
     }
 
     async get (req, res, next) {
-
+        const { id } = req.params;
+        const getUser = await model.contractTemplate.findById(id);
+        console.log(getUser)
+        return res.json(getUser);
     }
     
     async update (req, res, next) {

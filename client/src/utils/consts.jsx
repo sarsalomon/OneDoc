@@ -1,14 +1,14 @@
 // GENERAL
+export const HOME_ROUTE                        = '/';
+export const REGISTRATION_ROUTE                = '/registration';
+export const PRIVACYPOLICY_ROUTE               = '/privacypolicy';
+export const TERMOFUSE_ROUTE                   = '/termofuse';
+export const SERVICEACCEPTABLEPOLICY_ROUTE     = '/serviceAcceptablePolicy';
 
-export const HOME_ROUTE                    = '/';
-export const REGISTRATION_ROUTE            = '/registration';
-export const PRIVACYPOLICY_ROUTE           = '/privacypolicy';
-export const TERMOFUSE_ROUTE               = '/termofuse';
-export const SERVICEACCEPTABLEPOLICY_ROUTE = '/serviceAcceptablePolicy';
+export const CONTRACT_VIEW_ROUTE               = '/contractview';
+export const APPEAL_SEND_ROUTE                 = '/appeal';
 
-export const CONTRACT_VIEW_ROUTE           = '/contractview';
-export const NOTFOUNDED_ROUTE              = '/404';
-
+export const NOTFOUNDED_ROUTE                  = '/404';
 
 // USER
 export const USER_DASHBOARD_ROUTE              = '/user';
@@ -20,4 +20,4 @@ export const USER_DASHBOARD_TEMPLATE_ROUTE     = '/template';
 export const USER_DASHBOARD_OCR_ROUTE          = '/ocr';
 
 // ADMIN
-export const ADMIN_DASHBOARD_ROUTE          = '/admin';
+export const ADMIN_DASHBOARD_ROUTE             = '/admin';

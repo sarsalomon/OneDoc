@@ -1,6 +1,6 @@
 const ApiError = require("../error/ApiError");
 const model    = require('../database/db');
-const { SendCode } = require("./SmsController");
+const { SendCode } = require("./smsController");
 
 class ContractController {
     async add (req, res, next) {

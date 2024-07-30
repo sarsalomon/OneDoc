@@ -36,6 +36,7 @@ const ContractTwo = observer(() => {
       setUserInfo(data);
     });
   }, [user._user.id]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,7 +82,6 @@ const ContractTwo = observer(() => {
         });
     }
 }
-
 
   return (
     <>

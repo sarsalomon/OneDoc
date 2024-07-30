@@ -2,7 +2,7 @@ const ApiError = require("../error/ApiError");
 const jwt      = require('jsonwebtoken');
 const bcrypt   = require('bcrypt');
 const model    = require('../database/db');
-const { SendCode } = require("./SmsController");
+const { SendCode } = require("./smsController");
 
 const generateJwt = (id, login, name, money, phone, companyName, companySTIR, companyAddress, companyPhone, role) => {
     return token = jwt.sign(
@@ -44,8 +44,9 @@ class UserController {
 
     async login(req, res, next) {
         const { phone, password } = req.body;
-        
+        console.log(req.body)
         const user = await model.user.findOne({ phone });
+        console.log(req.body)
 
         if (!user) {
             return next(ApiError.internal("General:Auth:UserNotFoundError"));

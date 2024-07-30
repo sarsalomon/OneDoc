@@ -40,10 +40,10 @@
         "Send_button": "Jiberiw"
       },
       "Mail": {
-        "Title": "Korparativ pochta Tez arada"
+        "Title": "Korparativ pochta"
       },
       "AI": {
-        "Title": "Jasalma ań Tez arada"
+        "Title": "Jasalma ań"
       },
       "OCR": {
         "Title": "OCR-Redactor",
@@ -67,7 +67,8 @@
       "Home": {
         "Navbar": {
           "Login": "Kirisiw",
-          "Demo_button": "BIYPUL BASLAW"
+          "Demo_button": "Ro'yxatdan o'tish",
+          "Tariffs": "Tariflar"
         },
         "Header": {
           "text_one": "Shártnamalardı qol qoyıw xızmeti",
@@ -104,7 +105,10 @@
           "Sms_text_two": "Eskertiw xatları hám basqa zárúrli yuridikalıq hújjetlerdi PDF formada qısqa nomerler arqalı jiberiń.",
           "OCR": "OCR REDACTOR",
           "OCR_text_one": "OCR (optical character recognition) texnologiyası járdeminde pátdagi jazıwlardı tekst jaǵdayına keltiriń.",
-          "OCR_text_two": "Tekstlerdi qıyınshılıqsız tahrirlang, kóshirip alın yamasa Word formatında júklep alın."
+          "OCR_text_two": "Tekstlerdi qıyınshılıqsız tahrirlang, kóshirip alın yamasa Word formatında júklep alın.",
+          "AI": "OCR REDACTOR",
+          "AI_text_one": "OCR (optical character recognition) texnologiyasi yordamida suratlardagi yozuvlarni matn holatiga keltiring.",
+          "AI_text_two": "Matnlarni qiyinchiliksiz tahrirlang, ko‘chirib oling yoki Word formatida yuklab oling."
         },
         "Info": {
           "Info_content": "O'ZBEKISTON RESPUBLIKASI OLIY SUDI TOMONIDAN QAYD ETILGAN MA'LUMOTLARGA KO'RA 2023-YILDA O'ZBEKISTON IQTISODIY SUDLARI TOMONIDAN 271 748 TA ISHLAR KO'RIB CHIQILGAN HAMDA DA'vOGARLAR FOYDASIGA 23, 5 TRLN SO'M MIQDORDA MABLAG'LAR UNDIRUvI BO'YICHA QARORLAR CHIQARILGAN. DAvO ARIZALARINI SOHALAR vA MUAMMOLAR BO'YICHA GURUHLARGA BO'LINGANDA, SHARTNOMAvIY MUNOSABATLAR, XUSUSAN SHARTNOMA SHARTLARI ANIQ KO'RSATILMAGANLIGI, KO'P HOLATLARDA SHARTNOMALAR MUTLAQO MAvJUD EMASLIGI KO'RSATILGAN."

@@ -1,10 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./function/AppRouter";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { check } from "./function/http/UserApi";
 import { Context } from "./main";
 import { Spinner } from "react-bootstrap";
+import AppRouter from "./function/AppRouter";
 // import { SocketProvider } from "./pages/SocketClass";
 
 const App = observer( () => {

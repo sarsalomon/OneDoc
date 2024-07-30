@@ -20,7 +20,7 @@ const Auth = observer(() => {
             if (user) {
                 if (user._user.role === 'Admin') {
                     navigate(ADMIN_DASHBOARD_ROUTE);
-                } else if (user._user.role === 'User') {
+                } else if (user._user.role === 'User' || user._user.role === 'Lawyer') {
                     navigate(USER_DASHBOARD_ROUTE);
                 } 
             } else {
@@ -40,7 +40,6 @@ const Auth = observer(() => {
     const [whois, setWhoIs] = useState(false);
 
     const handleCheckboxChange = (e) => {
-      console.log(e.target.checked)
       setWhoIs(e.target.checked);
     };
   

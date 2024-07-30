@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export default class UserPolyclinic {
+export default class UserState {
     constructor() {
         this._isAuth = false;
         this._user = {};

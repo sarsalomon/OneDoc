@@ -3082,3 +3082,70 @@ main .main-content p.reminder a {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.smartphone {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes up-down {
+  0% {
+      transform: translateY(15px);
+  }
+
+  100% {
+      transform: translateY(-10px);
+  }
+}
+
+
+.BackgroundPage {
+  background: #e6e6e6;
+  height: 90vh;
+  overflow-y: scroll;
+  width: 100%;
+  padding: 20px 100px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Page {
+  height: 1300px;
+  min-height: 1300px;
+  max-height: 1300px;
+  width: 65%;
+  padding: 60px 45px 60px 90px;
+  background-color: white;
+  margin-bottom: 20px; /* Space between pages */
+}
+
+/* RichTextEditor.css */
+
+.editor-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  margin-right: 5px;
+}
+
+.editor {
+  min-height: 200px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.html-content {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}

@@ -40,10 +40,10 @@
         "Send_button": "Yuborish"
       },
       "Mail": {
-        "Title": "Korparativ pochta Tez orada"
+        "Title": "Korparativ pochta"
       },
       "AI": {
-        "Title": "Sun'iy ong Tez orada"
+        "Title": "Sun'iy ong"
       },
       "OCR": {
         "Title": "OCR-Redactor",
@@ -67,11 +67,12 @@
       "Home": {
         "Navbar": {
           "Login": "Kirish",
-          "Demo_button": "BEPUL BOSHLASH"
+          "Demo_button": "Ro'yxatdan o'tish",
+          "Tariffs": "Tariflar"
         },
         "Header": {
           "text_one": "Shartnomalarni imzolash xizmati",
-          "text_two": "Mijozlar, xodimlar va pudratchilar bilan shartnomalarni bir necha marta bosish orqali telefon orqali imzolang.",
+          "text_two": "murakkab yuridik hujjatlarni oson yaratish va tezkor imzolash",
           "text_three": "E'tibor uchun rahmat",
           "Header_description": "YURISTLARSIZ! QONUNIY! ARZON!"
         },
@@ -104,10 +105,13 @@
           "Sms_text_two": "Ogohlantirish xatlari va boshqa muhim yuridik hujjatlarni PDF shaklda qisqa raqamlar orqali yuboring.",
           "OCR": "OCR REDACTOR",
           "OCR_text_one": "OCR (optical character recognition) texnologiyasi yordamida suratlardagi yozuvlarni matn holatiga keltiring.",
-          "OCR_text_two": "Matnlarni qiyinchiliksiz tahrirlang, ko‘chirib oling yoki Word formatida yuklab oling."
+          "OCR_text_two": "Matnlarni qiyinchiliksiz tahrirlang, ko‘chirib oling yoki Word formatida yuklab oling.",
+          "AI": "AI YURIST",
+          "AI_text_one": "OCR (optical character recognition) texnologiyasi yordamida suratlardagi yozuvlarni matn holatiga keltiring.",
+          "AI_text_two": "Matnlarni qiyinchiliksiz tahrirlang, ko‘chirib oling yoki Word formatida yuklab oling."
         },
         "Info": {
-          "Info_content": "O‘ZBEKISTON RESPUBLIKASI OLIY SUDI TOMONIDAN QAYD ETILGAN MA’LUMOTLARGA KO‘RA 2023-YILDA O‘ZBEKISTON IQTISODIY SUDLARI TOMONIDAN 271 748 TA ISHLAR KO‘RIB CHIQILGAN HAMDA DA’VOGARLAR FOYDASIGA 23,5 TRLN SO‘M MIQDORDA MABLAG‘LAR UNDIRUVI BO‘YICHA QARORLAR CHIQARILGAN. DAVO ARIZALARINI SOHALAR VA MUAMMOLAR BO‘YICHA GURUHLARGA BO‘LINGANDA, SHARTNOMAVIY MUNOSABATLAR, XUSUSAN SHARTNOMA SHARTLARI ANIQ KO‘RSATILMAGANLIGI , KO‘P HOLATLARDA SHARTNOMALAR MUTLAQO MAVJUD EMASLIGI KO‘RSATILGAN."
+          "Info_content": "Milliy mehnat bozori tahliliy ko'rsatkichlariga ko'ra,  Toshkent shahrida yuristlarning o'rtacha oyligi 8.5 mln so'mni tashkil qiladi. Eng kam oylik 4 million so'mdan boshlanib , 33 million so'mgacha bo'lgan ish takliflari aniqlangan . 2 nafar yuristlar mehnat  jamoasini to'liq ta'minlash uchun (qog`ozlar, nusxa olish , pochta va boshqalar) yana qo'shimcha 1 250 000 so'mlik xarajatlar sarflanadi"
         },
         "Carousel": {
           "Carousel_one": "MEHMONXONA VA HOTELLAR,  DALA HOVLI VA SANATORIYALAR",

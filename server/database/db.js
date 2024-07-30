@@ -2,12 +2,34 @@ const { Schema, model } = require('mongoose');
 
 const ContractTemplateSchema = new Schema({
     title: {type: String},
+    objects: {type: String},
+    subjects: {type: String},
+    forms: {type: String},
     fields: {type: String},
     status: {type: Boolean}
 }, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
 
 const ContractSchema = new Schema({
     userId: {type: String},
+    title: {type: String},
+    contractTemplateId: {type: String},
+    contractObject: {type: String},
+    contractSubject: {type: String},
+    type: {type: String},
+    device: {type: String},
+    image: {type: String},
+    smsCode: {type: String},
+    status: {type: String}
+}, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
+
+const AppealSchema = new Schema({
+    userId: {type: String},
+    contractTemplateId: {type: String},
+    userInfo: {type: String},
+    status: {type: String}
+}, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });
+
+const SmsSchema = new Schema({
     title: {type: String},
     contractTemplateId: {type: String},
     contractObject: {type: String},
@@ -38,4 +60,6 @@ const UserSchema = new Schema({
 
 module.exports.contractTemplate = model("ContractTemplate", ContractTemplateSchema);
 module.exports.contract         = model("Contract", ContractSchema);
+module.exports.appeal           = model("Appeal", AppealSchema);
+module.exports.sms              = model("Sms", SmsSchema);
 module.exports.user             = model("User", UserSchema);

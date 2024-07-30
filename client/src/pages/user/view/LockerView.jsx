@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 const UserLockerView = observer(() => {
   const { user } = useContext(Context);
   const [key, setKey] = useState('pay');
-  const [contracts, setContracts] = useState([]);
+  
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -17,8 +17,6 @@ const UserLockerView = observer(() => {
       setContracts(data);
     });
 }, []);
-
-
 
   return (
     <>
