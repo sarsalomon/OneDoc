@@ -464,10 +464,22 @@ const handleKeyDown = (event) => {
                   </div>
                   <div className="d-flex justify-content-between">
                     <div>
-                      <div>«Ижрочи»</div>
-                      <div>F.I.O: <b>{userInfo.name} {userInfo.surname}</b></div>
-                      <div>+998 <b>{userInfo.phone}</b></div>
-                      <div>имзо: ____________________</div>
+                    {
+                        userInfo?.role == "User" ?
+                          <div>
+                            <div>{userInfo?.name} {userInfo?.surname}</div>
+                            <div>{userInfo?.phone}</div>
+                            <div>(имзо) ____________________</div>
+                          </div>
+                        :
+                          <div>
+                            Корхона: {userInfo?.companyName} <br />
+                            Корхона STIR: {userInfo?.companySTIR} <br />
+                            Корхона Manzil: {userInfo?.companyAddress} <br />
+                            Корхона Raqami: +998 {userInfo?.companyPhone} <br />
+                            <div>имзо: ____________________</div>
+                          </div>
+                      }
                     </div>
 
                     <div>

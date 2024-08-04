@@ -15,7 +15,12 @@ const ContractOne = observer(() => {
     where: '',
     date: '',
     whois: `${userInfo.name} ${userInfo.surname}`,
-    phone: userInfo.phone
+    phone: userInfo.phone,
+    role: userInfo.role,
+    companyName: userInfo.companyName,
+    companySTIR: userInfo.companySTIR,
+    companyAddress: userInfo.companyAddress,
+    companyPhone: userInfo.companyPhone
   });
 
   const [subjects, setSubjects] = useState({
@@ -286,8 +291,8 @@ const ContractOne = observer(() => {
                   <div>&nbsp;</div>
                   <div>
                     <div className="d-flex justify-content-between align-items-center">
-                      <span>{objects.where}</span>
-                      <span>{objects.date}</span>
+                      <span>{objects?.where}</span>
+                      <span>{objects?.date}</span>
                     </div>
                   </div>
                   <div>&nbsp;</div>
@@ -404,18 +409,31 @@ const ContractOne = observer(() => {
                   <div className="d-flex justify-content-between align-items-center">
                     <div>
                       <div>«Ижрочи»</div>
-                      <div>{userInfo.name} {userInfo.surname}</div>
-                      <div>{userInfo.phone}</div>
-                      <div>(имзо) ____________________</div>
+                      {
+                        userInfo?.role == "User" ?
+                          <div>
+                            <div>{userInfo?.name} {userInfo?.surname}</div>
+                            <div>{userInfo?.phone}</div>
+                            <div>(имзо) ____________________</div>
+                          </div>
+                        :
+                          <div>
+                            Корхона: {userInfo?.companyName} <br />
+                            Корхона STIR: {userInfo?.companySTIR} <br />
+                            Корхона Manzil: {userInfo?.companyAddress} <br />
+                            Корхона Raqami: +998 {userInfo?.companyPhone} <br />
+                            <div>имзо: ____________________</div>
+                          </div>
+                      }
                     </div>
 
                     <div>
                       <div>
                         <span>«БУЮРТМАЧИ»</span>
                       </div>
-                      <div>F.I.O: <b>{subjects.name}</b></div>
-                      <div>Manzil: <b>{subjects.address}</b></div>
-                      <div>+998 <b>{subjects.number}</b></div>
+                      <div>F.I.O: <b>{subjects?.name}</b></div>
+                      <div>Manzil: <b>{subjects?.address}</b></div>
+                      <div>+998 <b>{subjects?.number}</b></div>
                       <div>
                         <br/>
                       </div>
