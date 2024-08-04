@@ -8,15 +8,33 @@ import { Helmet } from 'react-helmet-async';
 
 const UserLockerView = observer(() => {
   const { user } = useContext(Context);
-  const [key, setKey] = useState('pay');
-  
+
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const { t } = useTranslation();
 
-  useEffect(() => {
-    getDatasContractById(user._user.id).then(data => {
-      setContracts(data);
-    });
-}, []);
+  const handleFileChange = (e) => {
+
+    const selectedFile = e.target.files[0];
+
+    if (!selectedFile) return;
+
+    // Basic file type validation
+    if (
+      !selectedFile.type.endsWith(".pdf")
+    ) {
+      return;
+    }
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setImageSrc(reader.result);
+      setFile(selectedFile);
+    };
+
+    reader.readAsDataURL(selectedFile);
+  };
 
   return (
     <>
@@ -26,7 +44,10 @@ const UserLockerView = observer(() => {
     <div className="locker-container locker-page">
       <h3 className="locker-title">{t("User:Locker:PageTitle")}</h3>
 
-      <button className="upload-btn btn btn-outline-primary">{t("User:FileUploads")}</button>
+      <button className="upload-btn btn btn-outline-primary">
+        {t("User:FileUploads")} (.pdf)
+        <input type="file" accept="application/pdf" onChange={handleFileChange} disabled={loading} />
+      </button>
 
       <div className="locker-form-container">
         <h4 className="locker-form-title">{t("User:Locker:Text_one")}</h4>
@@ -36,11 +57,6 @@ const UserLockerView = observer(() => {
         <input className="locker-input" type="text" placeholder={t("User:Locker:RePassword_number_input")} />
 
         <button className="locker-btn btn btn-primary">{t("User:Locker:Block_button")}</button>
-
-        <div className="locker-phone-container">
-          <input className="locker-input" type="text" placeholder={t("User:Locker:Phone_number_input")} />
-          <button className="send-btn btn btn-primary">{t("User:Locker:Share_button")}</button>
-        </div>
       </div>
     </div>
     </>

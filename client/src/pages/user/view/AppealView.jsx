@@ -44,7 +44,7 @@ const UserAppealView = observer(() => {
   return (
     <>
       <Helmet>
-        <title>{t("User:Locker:Title")}</title>
+        <title>{t("User:Appeal:Title")}</title>
       </Helmet>
       <div className="murojaatlar-page">
         <div className="top-bar">

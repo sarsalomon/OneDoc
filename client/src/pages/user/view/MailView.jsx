@@ -27,7 +27,7 @@ const UserMailView = observer(() => {
   return (
     <>
     <Helmet>
-      <title>{t("User:Locker:Title")}</title>
+      <title>{t("User:Mail:Title")}</title>
     </Helmet>
       <UserDashboardNavbar/>
       <Container fluid>

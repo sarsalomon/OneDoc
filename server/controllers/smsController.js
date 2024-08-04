@@ -4,7 +4,8 @@ const model    = require('../database/db');
 
 class SmsController {
     async SendCode(req, res, next) {
-        let code = Math.floor(Math.random() * 9999) + 1000;
+        // let code = Math.floor(Math.random() * 9999) + 1000;
+        let code = 1111;
         return code;
     }
 

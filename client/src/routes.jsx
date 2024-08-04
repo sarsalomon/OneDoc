@@ -1,4 +1,4 @@
-import { ADMIN_DASHBOARD_ROUTE, APPEAL_SEND_ROUTE, CONTRACT_VIEW_ROUTE, HOME_ROUTE, PRIVACYPOLICY_ROUTE, REGISTRATION_ROUTE, SERVICEACCEPTABLEPOLICY_ROUTE, TERMOFUSE_ROUTE, USER_DASHBOARD_ACCOUNT_ROUTE, USER_DASHBOARD_CONTRACT_ADD_ROUTE, USER_DASHBOARD_CONTRACT_ROUTE, USER_DASHBOARD_OCR_ROUTE, USER_DASHBOARD_PAY_ROUTE, USER_DASHBOARD_ROUTE } from "./utils/consts";
+import { ADMIN_DASHBOARD_ROUTE, APPEAL_VIEW_ROUTE, CONTRACT_VIEW_ROUTE, HOME_ROUTE, PRIVACYPOLICY_ROUTE, REGISTRATION_ROUTE, SERVICEACCEPTABLEPOLICY_ROUTE, TERMOFUSE_ROUTE, USER_DASHBOARD_ACCOUNT_ROUTE, USER_DASHBOARD_CONTRACT_ADD_ROUTE, USER_DASHBOARD_CONTRACT_ROUTE, USER_DASHBOARD_OCR_ROUTE, USER_DASHBOARD_PAY_ROUTE, USER_DASHBOARD_ROUTE } from "./utils/consts";
 import Auth from "./pages/site/Auth";
 import Home from "./pages/Home";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -51,6 +51,10 @@ export const authRoutes = [
         path: REGISTRATION_ROUTE,
         Component: Auth
     },
+    {
+        path: CONTRACT_VIEW_ROUTE + '/:id',
+        Component: ContractView
+    },
 ];
 
 export const publicRoutes = [
@@ -79,7 +83,7 @@ export const publicRoutes = [
         Component: ContractView
     },
     {
-        path: APPEAL_SEND_ROUTE + '/:id',
+        path: APPEAL_VIEW_ROUTE + '/:id',
         Component: HomeAppeal
     },
 ];

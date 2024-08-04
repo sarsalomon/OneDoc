@@ -17,11 +17,39 @@
       "Work_text": "Xorijga ishga yuborish",
       "Search_text": "Ma'lumot qidirish",
       "Exit": "Chiqish",
+      "Account": {
+        "PageTitle": "Ma'lumotlar yangilash",
+        "SubTitle": "Faqat bir marta yangilash mumkin, shuning uchun e'tiborli bo'ling",
+        "UpdateButton": "Yangilash",
+        "Subject": {
+          "Title": "Shaxsiy ma'lumot",
+          "Name": "Korxona nomi",
+          "Surname": "Stir raqami",
+          "Date": "Korxona manzil",
+          "Passport": "Korxona telefon raqami",
+          "Phone": "Korxona telefon raqami"
+        },
+        "Object": {
+          "Title": "Korxona ma'lumoti",
+          "CompanyName": "Korxona nomi",
+          "CompanySTIR": "Stir raqami",
+          "CompanyAddress": "Korxona manzil",
+          "CompanyPhone": "Korxona telefon raqami"
+        }
+      },
       "Contract": {
-        "Title": "Shartnomalar"
+        "Title": "Shartnomalar",
+        "Component": {
+          "PageTitle": "Shartnoma yaratish",
+          "SelectContract": "Shartnoma Tanglang"
+        }
       },
       "Application": {
-        "Title": "Arizalar"
+        "Title": "Arizalar",
+        "Component": {
+          "PageTitle": "Shartnoma yaratish",
+          "SelectContract": "Shartnoma Tanglang"
+        }
       },
       "Appeal": {
         "Title": "Murojaatlar"
@@ -193,6 +221,16 @@
         "authError": "Login noto'g'ri yozilgan"
       },
       "Auth": {
+        "Registration": {
+          "PageTitle": "Ro'yxatdan o'tish",
+          "Name_error": "Ism yozing",
+          "Surname_error": "Famaliya yozing",
+          "Phone_error": "Telefon raqam yozing",
+          "Password_error": "Parolni yozing",
+          "Whois_error": "Tizimga kirish",
+          "UserExitingError": "Foydalanuvchi allaqachon tizimda mavjud",
+          "RePasswordError": "Parolni togri yoz"
+        },
         "pageTitle": "Tizimga kirish",
         "notRegister": "Hisob yo'qmi?",
         "register": "Ro'yxatdan o'tish",

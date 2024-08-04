@@ -104,6 +104,7 @@ const Home = observer(() => {
       localStorage.getItem("Language") === undefined ||
       localStorage.getItem("Language") === ""
     ) {
+      localStorage.setItem('Location', 'ContractView');
       localStorage.setItem("Language", "uz");
     } else {
       i18n.changeLanguage(localStorage.getItem("Language"));
@@ -118,8 +119,6 @@ const Home = observer(() => {
   const click = async () => {
     try {
       let data;
-      console.log(phone);
-      console.log(password);
       data = await signIn(phone, password);
 
       if (phone.length != 9) {

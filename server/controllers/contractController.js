@@ -1,17 +1,18 @@
 const ApiError = require("../error/ApiError");
 const model    = require('../database/db');
 const { SendCode } = require("./smsController");
+const mongoose = require('mongoose');
 
 class ContractController {
     async add (req, res, next) {
-        const { userId, title, contractTemplateId, type, object, subjects } = req.body;
-        console.log(req.body)
+        const { userId, title, templateId, type, object, subjects } = req.body;
+
         const contract = await model.contract.create({
             userId: userId,
             title: title,
-            contractTemplateId: contractTemplateId,
-            contractObject: object,
-            contractSubject: subjects,
+            templateId: templateId,
+            object: object,
+            subject: subjects,
             type: type,
             device: '',
             image: '',
@@ -28,27 +29,32 @@ class ContractController {
 
     async fetchById (req, res, next) {
         const { id } = req.body;
-
         const fetchContract = await model.contract.find({userId: id});
-        
         return res.json(fetchContract);
-        console.log(fetchContract)
-
     }
 
     async get (req, res, next) {
         const { id } = req.params;
-        const getUser = await model.contract.findById(id);
-        return res.json(getUser);
+
+        if (!mongoose.isValidObjectId(id)) {
+            return res.status(400).json({ error: 'Invalid ID format' });
+        }
+    
+        try {
+            const getUser = await model.contract.findById(id);
+            if (!getUser) {
+                return res.status(404).json({ error: 'Contract not found' });
+            }
+            return res.json(getUser);
+        } catch (error) {
+            return next(error);
+        }
     }
     
     async getCode (req, res, next) {
         const { contractId } = req.body;
-
         let code = await SendCode();
-
         const updateContract = await model.contract.findByIdAndUpdate(contractId, {smsCode: code}, {new:true});
-        console.log(updateContract)
         return res.json(updateContract);
     }
 
@@ -60,13 +66,13 @@ class ContractController {
         if (findContract && findContract.smsCode === code) {
             if (findContract.type == 1) {
                 const updateContract = await model.contract.findByIdAndUpdate(contractId, {device: device, status: 'End'}, {new:true});
-                return res.json(updateContract);
+                return res.json('success');
             } else if (findContract.type == 2) {
                 const updateContract = await model.contract.findByIdAndUpdate(contractId, {device: device, status: 'WaitSignature'}, {new:true});
-                return res.json(updateContract);
+                return res.json('success');
             } else if (findContract.type == 3) {
                 const updateContract = await model.contract.findByIdAndUpdate(contractId, {status: 'End'}, {new:true});
-                return res.json(updateContract);
+                return res.json('success');
             } else {
                 return next(ApiError.internal("General:Auth:UserNotFoundError"));
             }
@@ -82,7 +88,7 @@ class ContractController {
 
         if (findContract) {
             const updateContract = await model.contract.findByIdAndUpdate(contractId, {device: device, image: image, status: 'End'}, {new:true});
-            return res.json(updateContract);
+            return res.json('success');
         } else {
             return next(ApiError.internal("General:Auth:UserNotFoundError"));
         }

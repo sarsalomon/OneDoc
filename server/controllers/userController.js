@@ -17,21 +17,21 @@ class UserController {
         const { name, surname, phone, password, whois } = req.body;
         
         if (!name) {
-            return next(ApiError.badRequest("Phone_error"));
+            return next(ApiError.badRequest("General:Auth:Registration:Name_error"));
         } else if (!surname) {
-            return next(ApiError.badRequest("Password_error"));
+            return next(ApiError.badRequest("General:Auth:Registration:Surname_error"));
         } else if (!phone) {
-            return next(ApiError.badRequest("Password_error"));
+            return next(ApiError.badRequest("General:Auth:Registration:Phone_error"));
         } else if (!password) {
-            return next(ApiError.badRequest("Password_error"));
+            return next(ApiError.badRequest("General:Auth:Registration:Password_error"));
         } else if (!whois) {
-            return next(ApiError.badRequest("Password_error"));
+            return next(ApiError.badRequest("General:Auth:Registration:Whois_error"));
         }
 
         const condidate = await model.user.findOne({ phone });
 
         if (condidate) {
-            return next(ApiError.badRequest("UserExitingError"));
+            return next(ApiError.badRequest("General:Auth:Registration:UserExitingError"));
         }
         
         let code = await SendCode();
@@ -44,9 +44,7 @@ class UserController {
 
     async login(req, res, next) {
         const { phone, password } = req.body;
-        console.log(req.body)
         const user = await model.user.findOne({ phone });
-        console.log(req.body)
 
         if (!user) {
             return next(ApiError.internal("General:Auth:UserNotFoundError"));
@@ -72,6 +70,7 @@ class UserController {
 
     async getUser (req, res, next) {
         const { id } = req.params;
+        console.log(id)
         const getUser = await model.user.findById(id);
         return res.json(getUser);
     }

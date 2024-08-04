@@ -16,7 +16,7 @@ export const getDataContract = async (id) =>{
 }
 
 export const getDatasContractById = async (id) =>{
-    const { data } = await $authHost.post('api/contract/fetchbyid/', {id});
+    const { data } = await $authHost.post('api/contract/fetchbyid/', { id });
     return data
 }
 
