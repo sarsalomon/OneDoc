@@ -24,3 +24,8 @@ export const deleteDataLocker = async (id)  =>{
     const { data } = await $authHost.post('api/locker/delete/', { id });
     return data
 }
+
+export const fileLocker = async (id)  =>{
+    const { data } = await $authHost.post('api/locker/delete/', { id });
+    return data
+}

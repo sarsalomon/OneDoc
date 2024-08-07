@@ -1,11 +1,7 @@
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
-import {
-  getUser,
-  updateUser,
-  updateUserCompany,
-} from "../../../function/http/UserApi";
+import { getUser, updateUser, updateUserCompany } from "../../../function/http/UserApi";
 import { Context } from "../../../main";
 import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";

@@ -1,9 +1,13 @@
+
+const { exec } = require('child_process');
+const path = require('path');
+
+const bcrypt   = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
+
 const ApiError = require("../error/ApiError");
 const model    = require('../database/db');
 
-const bcrypt   = require('bcrypt');
-const { exec } = require('child_process');
-const path = require('path');
 
 class LockerController {
     async add (req, res, next) {
@@ -17,12 +21,6 @@ class LockerController {
     }
 
     async get (req, res, next) {
-        const { id } = req.params;
-        console.log(id)
-
-        const getTemplate = await model.template.findById(id);
-        console.log(getTemplate)
-        return res.json(getTemplate);
     }
     
     async update (req, res, next) {
@@ -37,26 +35,26 @@ class LockerController {
         const { password } = req.body;
         const { file } = req.files;
 
-        let fileName = uuid.v4() + ".pdf";
+        let fileName = uuidv4() + ".pdf";
+
         let paths = path.resolve(__dirname, '..', 'data', 'pdf', fileName); 
 
         file.mv(paths);
 
-        const exePath = path.resolve(__dirname, 'python/dist', 'index');
+        const exePath = path.resolve('/root/OneDoc/python/dist/index');
 
         exec(`"${exePath}" "${paths}" "${password}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Execution error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`Standard error: ${stderr}`);
-            return;
-        }
-        console.log(stdout);
-        
+            if (error) {
+                console.error(`Execution error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`Standard error: ${stderr}`);
+                return;
+            }
+            let pdfFileName = stdout.replace('/root/OneDoc/server/data/pdf/', ' https://api.1doc.uz/pdf/');
+            return res.json(pdfFileName)
         });
-
     }
 }
 

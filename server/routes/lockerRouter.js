@@ -3,7 +3,7 @@ const lockerController = require("../controllers/lockerController");
 const router = new Router();
 
 router.post('/', lockerController.fetch);
-router.post('/add', lockerController.add);
+router.post('/add', lockerController.locker);
 router.get('/get/:id', lockerController.get);
 router.post('/update', lockerController.update);
 router.post('/delete', lockerController.delete);

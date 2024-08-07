@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/api',express.static(path.resolve(__dirname, 'static')))
+app.use(express.static(path.resolve(__dirname, 'data')))
 app.use(fileUpload({}))
 app.use('/api', router);
 

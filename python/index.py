@@ -7,7 +7,6 @@ def main():
     parser.add_argument('file', type=str, help='The PDF file to be encrypted')
     parser.add_argument('password', type=str, help='The password to encrypt the PDF with')
     args = parser.parse_args()
-    print(args)
     file_path = os.path.join('/root/OneDoc/server/data/pdf', args.file)
 
     try:

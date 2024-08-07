@@ -5,7 +5,7 @@ const templateRouter = require("./templateRouter");
 const contractRouter = require("./contractRouter");
 const appealRouter   = require("./appealRouter");
 const smsRouter      = require("./smsRouter");
-const lockerRouter   = require("./userRouter");
+const lockerRouter   = require("./lockerRouter");
 const userRouter     = require("./userRouter");
 
 router.use('/template', templateRouter);
