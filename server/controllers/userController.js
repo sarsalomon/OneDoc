@@ -70,7 +70,6 @@ class UserController {
 
     async getUser (req, res, next) {
         const { id } = req.params;
-        console.log(id)
         const getUser = await model.user.findById(id);
         return res.json(getUser);
     }

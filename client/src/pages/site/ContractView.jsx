@@ -1,34 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Modal, Form, InputGroup } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ToastContainer, toast } from "react-toastify";
-
+import SignatureCanvas from 'react-signature-canvas'
 import { isMobile, isTablet, isDesktop, osName, osVersion, browserName, browserVersion, isChrome, isFirefox, isSafari, isOpera, isIE, isEdge, isYandex, isChromium,  isMobileSafari, sSamsungBrowser, getUA, isWindows, isMacOs, isLinux, mobileVendor, isAndroid, isWinPhone, isIOS, mobileModel } from 'react-device-detect';
 import { publicIp } from 'public-ip';
-
 import QRCode from 'qrcode'
 import jsPDF from 'jspdf';
-import SignatureCanvas from 'react-signature-canvas'
-import html2canvas from 'html2canvas';
 
 import { getDataCode, getDataContract, verifyDataCode, verifyDataSignature } from '../../function/http/ContractAPI';
-import { getUser } from '../../function/http/UserApi';
-
-import { HOME_ROUTE } from '../../utils/consts';
-
-import Logo_Light from "../../assets/img/logo_light.webp";
 
 const ContractView = observer(() => {
   const { id } = useParams();
-
-  const [userInfo, setUserInfo] = useState("");
-
   const [contractData, setContractData] = useState(null);
   const [code, setCode] = useState('');
-
   const [signature, setSignature] = useState('');
+
 
   const [CodeShow, setCodeShow] = useState(false);
   const [SignatureShow, setSignatureShow] = useState(false);
@@ -40,21 +29,20 @@ const ContractView = observer(() => {
   const SignatureModelShow = () => setSignatureShow(true);
 
   useEffect(() => {
-    getDataContract(id).then((data) => {
-      setContractData(data);
-    });
+    async function fetchData() {
+      try {
+        const responseData = await getDataContract(id);
+        setContractData(responseData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
   }, [id]);
 
-  useEffect(() => {
-    if (contractData != null) {
-      getUser(contractData?.userId).then((data) => {
-        setUserInfo(data);
-      });
-    }
-  }, [contractData]);
-
-  const contractObject = JSON.parse(contractData?.object || '{}');
-  const contractSubject = JSON.parse(contractData?.subject || '{}');
+  const contractObject = JSON.parse(contractData?.contractObject || '{}');
+  const contractSubject = JSON.parse(contractData?.contractSubject || '{}');
 
   const getSmsCode = async () => {
     try {
@@ -102,17 +90,15 @@ const ContractView = observer(() => {
   const acceptCode = async () => {
     try {
       const formData = new FormData();
-  
+
       const deviceInfo = await checkDevice();
-  
+
       formData.append('contractId', contractData._id);
       formData.append('code', code);
       formData.append('device', JSON.stringify(deviceInfo));
-  
+
       const response = await verifyDataCode(formData);
-      console.log(response);
-  
-      if (response === 'success') {
+      if (response.data && response.data.success) {
         toast.success('Contract verification successful!', {
           position: "bottom-right",
           autoClose: 5000,
@@ -123,20 +109,8 @@ const ContractView = observer(() => {
           progress: undefined,
           theme: "light",
         });
-  
-        setCodeShow(false);
-  
-        // Обновляем состояние контракта в зависимости от его типа
-        let updatedContractData = { ...contractData };
-        
-        if (contractData.type === "1") {
-          updatedContractData = { ...updatedContractData, status: "End" };
-        } else if (contractData.type === "2") {
-          updatedContractData = { ...updatedContractData, status: "WaitSignature" };
-        }
-  
-        setContractData(updatedContractData);
-  
+
+        setContractData(response.data.updatedContractData);
       } else {
         toast.error('Failed to verify contract. Please check the code and try again.', {
           position: "bottom-right",
@@ -162,7 +136,7 @@ const ContractView = observer(() => {
       });
     }
   };
-  
+
 
   const SignatureClear = async () => {
     try {
@@ -194,7 +168,7 @@ const ContractView = observer(() => {
 
       const response = await verifyDataSignature(formData);
 
-      if (response == 'success') {
+      if (response.data && response.data.success) {
         toast.success('Contract verification successful!', {
           position: "bottom-right",
           autoClose: 5000,
@@ -206,13 +180,7 @@ const ContractView = observer(() => {
           theme: "light",
         });
 
-        setSignatureShow(false);
-        let updatedContractData = { ...contractData };
-        
-        updatedContractData = { ...updatedContractData, status: "End" };
-  
-        setContractData(updatedContractData);
-  
+        setContractData(response.data.updatedContractData);
       } else {
         toast.error('Failed to verify contract. Please check the code and try again.', {
           position: "bottom-right",
@@ -259,75 +227,50 @@ const ContractView = observer(() => {
   };
 
   const generatePDF = async () => {
-    const pages = document.querySelectorAll('.Page');
-    const pdf = new jsPDF();
+    var doc = new jsPDF();
 
-    const qrCodeCanvas = await QRCode.toCanvas(`http://localhost:5173/contractview/${contractData._id}`, { width: 200 });
-    const qrCodeDataURL = qrCodeCanvas.toDataURL('image/webp');
+    var midPage = doc.internal.pageSize.getWidth()/2
 
-    for (let i = 0; i < pages.length; i++) {
-        const page = pages[i];
-        const canvas = await html2canvas(page, { scale: 1 });
-        const imgData = canvas.toDataURL('image/webp', 1);
-        
-        if (i > 0) {
-            pdf.addPage();
-        }
-        
-        pdf.addImage(imgData, 'WEBP', 10, 10, 190, 277);
+    doc.setFontSize(25);
+    doc.text("Pullik shartnoma", midPage , 10, null, null, "center")
+    doc.setFontSize(20);
+    doc.text("Shartnoma", midPage , 20, null, null, "center")
+    doc.setFontSize(15);
+    doc.text("Shartnoma raqami - 1", midPage , 30, null, null, "center")
 
-        const qrCodeWidth = 20;
-        const qrCodeHeight = 20; 
-        pdf.addImage(qrCodeDataURL, 'WEBP', 10, 270, qrCodeWidth, qrCodeHeight); 
-    }
-    
-    pdf.save('Contract.pdf');
+    doc.setFontSize(12);
+    doc.text(contractObject.where, 80 , 40, null, null, "center")
+    doc.setFontSize(12);
+    doc.text(contractObject.date, 150 , 40, null, null, "center")
+
+    doc.setFontSize(12);
+    var text = `Ustav asosida ish ko‘ruvchi ta'lim markazi direktori %F.I.Oijrochi%
+      keyinchalik «Ijrochi» deb yuritiluvchi, bir tomonidan Ota-ona yoki ularning 
+      o‘rnini bosuvchi shaxsning ${contractSubject.name} nomidan o‘quvchining 
+      manfaatlarini ifoda etuvchi keyinchalik «Buyurtmachi» deb yuritiluvchi, ikkinchi 
+      tomonidan, mazkur shartnomani quyidagilar to‘g‘risida tuzdilar:`;
+
+// Вставка текста в документ
+    doc.text(text, 10, 50);
+
+    const canvas = await QRCode.toCanvas("http://localhost:5173/contractview/6682454d6bfaed086455c2c5", { width: 200 }); // Replace URL with actual data
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 15, 100, 50, 50);
+
+    doc.addImage(contractData.image, 'PNG', 10, 10, 40, 40);
+    doc.save('contract.pdf');
   }
-
-  useEffect(() => {
-    
-    const keyDownHandler = (event) => {
-        if (event.key === 'Enter') {
-            if (CodeShow == true) {
-              acceptCode();
-            } else if (SignatureShow == true) {
-              acceptSignature();
-            }
-        }
-    };
-
-    document.addEventListener('keydown', keyDownHandler);
-
-    return () => {
-        document.removeEventListener('keydown', keyDownHandler);
-    };
-}, [CodeShow, SignatureShow]);
-
-const handleKeyDown = (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-  }
-};
+  console.log(contractData)
 
   return (
     <>
       <Helmet>
-        <title>Shartnoma Imzolash</title>
+        <title>Shartnoma</title>
         <meta name="description" content="This is my page description." />
       </Helmet>
-
       <Container fluid>
         <Row>
           <Col>
-            <Link to={HOME_ROUTE} className="logo d-flex justify-content-center align-items-center">
-                <img src={Logo_Light} alt="1doc.uz Logo" style={{width: "100px"}} />
-                <h1>1doc.uz</h1>
-            </Link>
-          </Col>
-        </Row>
 
-        <Row>
-          <Col xxl={8} xl={8} lg={8} md={8} sm={8}>
           <div className='BackgroundPage'>
                 <div className='Page'>
                   <div>
@@ -462,24 +405,12 @@ const handleKeyDown = (event) => {
                       <b>8. ТОМОНЛАРНИНГ МАНЗИЛИ, БАНК РЕКВИЗИТЛАРИ ВА БОШҚА МАЪЛУМОТЛАРИ:</b>
                     </span>
                   </div>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between align-items-center">
                     <div>
-                    {
-                        userInfo?.role == "User" ?
-                          <div>
-                            <div>{userInfo?.name} {userInfo?.surname}</div>
-                            <div>{userInfo?.phone}</div>
-                            <div>(имзо) ____________________</div>
-                          </div>
-                        :
-                          <div>
-                            Корхона: {userInfo?.companyName} <br />
-                            Корхона STIR: {userInfo?.companySTIR} <br />
-                            Корхона Manzil: {userInfo?.companyAddress} <br />
-                            Корхона Raqami: +998 {userInfo?.companyPhone} <br />
-                            <div>имзо: ____________________</div>
-                          </div>
-                      }
+                      <div>«Ижрочи»</div>
+                      {/* <div>{userInfo.name} {userInfo.surname}</div>
+                      <div>{userInfo.phone}</div> */}
+                      <div>(имзо) ____________________</div>
                     </div>
 
                     <div>
@@ -490,18 +421,9 @@ const handleKeyDown = (event) => {
                       <div>Manzil: <b>{contractSubject.address}</b></div>
                       <div>+998 <b>{contractSubject.number}</b></div>
                       <div>
-                        {
-                          contractData?.image != '' ?
-                          <div>
-                            имзо: <img src={contractData?.image} alt="" style={{width: "100px"}} />
-                            
-                          </div>
-                          :
-                          <div>
-                            имзо: ________________________
-                          </div>
-                        }
+                        <br/>
                       </div>
+                      <div>(имзо) ________________________</div>
                       <div>
                         <br/>
                       </div>
@@ -509,29 +431,32 @@ const handleKeyDown = (event) => {
                   </div>
                 </div>
               </div>
+
+            <h2>{contractData?.title}</h2>
+            <p>Status: {contractData?.status}</p>
+            <p>Create Date: {new Date(contractData?.createDate).toLocaleDateString()}</p>
+            {/* Add more contract details as needed */}
           </Col>
           {
             contractData?.status === 'End' ? (
               <Col>
-                <span>Holati: Imzolandi</span>
+                <span>Imzolandi</span>
                 <br />
-                <Button onClick={generatePDF}>Ko'chirib olish PDF</Button>
+                <span onClick={generatePDF}>Ko'chirib olish PDF</span>
               </Col>
             ) : (
               <Col>
-                <span>Shartnoma ma'lumotlari</span>
                 <Card>
-                  <Card.Title>Ijrochi ma'lumotlari</Card.Title>
+                  <Card.Title>Contract Object Details</Card.Title>
                   <Card.Body>
                     <p>Where: {contractObject?.where}</p>
                     <p>Date: {contractObject?.date}</p>
                   </Card.Body>
                 </Card>
                 <Card>
-                  <Card.Title>Buyurtmachi ma'lumotlari</Card.Title>
+                  <Card.Title>Contract Subject Details</Card.Title>
                   <Card.Body>
                     <p>Name: {contractSubject?.name}</p>
-                    
                     {contractData?.status === 'Create' ? (
                       <Button onClick={CodeModelShow}>
                         SMS orqali Tasdiqlash
@@ -595,7 +520,7 @@ const handleKeyDown = (event) => {
         </Modal.Header>
         <Modal.Body>
           <Form className="d-flex flex-column">
-            <span onClick={getSmsCode} className='GetCode'>Tasdiqlash uchun kod olish</span>
+            <span onClick={getSmsCode}>Tasdiqlash uchun kod olish</span>
             <InputGroup className="mb-3">
               <Form.Control
                 minLength={4}
@@ -603,7 +528,6 @@ const handleKeyDown = (event) => {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Kodni kiriting"
-                onKeyDown={handleKeyDown}
               />
               <Button variant="success" onClick={acceptCode}>
                 Tasdiqlash

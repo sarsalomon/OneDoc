@@ -16,6 +16,7 @@ class TemplateController {
     async get (req, res, next) {
         const { id } = req.params;
         console.log(id)
+
         const getTemplate = await model.template.findById(id);
         console.log(getTemplate)
         return res.json(getTemplate);

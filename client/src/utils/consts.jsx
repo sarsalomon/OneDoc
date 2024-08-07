@@ -6,7 +6,7 @@ export const TERMOFUSE_ROUTE                   = '/termofuse';
 export const SERVICEACCEPTABLEPOLICY_ROUTE     = '/serviceAcceptablePolicy';
 
 export const CONTRACT_VIEW_ROUTE               = '/contractview';
-export const APPEAL_VIEW_ROUTE                 = '/appealview';
+export const APPEAL_SEND_ROUTE                 = '/appeal';
 
 export const NOTFOUNDED_ROUTE                  = '/404';
 

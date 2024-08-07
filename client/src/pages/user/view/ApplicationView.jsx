@@ -23,7 +23,7 @@ const UserApplicationView = observer(() => {
   return (
     <>
     <Helmet>
-      <title>{t("User:Application:Title")}</title>
+      <title>{t("User:Locker:Title")}</title>
     </Helmet>
      <div>
       <div className="row align-items-center top-bar">

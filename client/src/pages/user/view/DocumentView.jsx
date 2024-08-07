@@ -10,6 +10,8 @@ const UserDocumentView = observer(() => {
   const { user } = useContext(Context);
   const [key, setKey] = useState('pay');
   const [contracts, setContracts] = useState([]);
+  console.log(user._user.id)
+  console.log(contracts)
 
   useEffect(() => {
     getDatasContractById(user._user.id).then(data => {
@@ -21,7 +23,7 @@ const { t } = useTranslation();
   return (
     <>
     <Helmet>
-      <title>{t("User:Document:Title")}</title>
+      <title>{t("User:Locker:Title")}</title>
     </Helmet>
          <div>
       <div className="row align-items-center top-bar">

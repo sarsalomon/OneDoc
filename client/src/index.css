@@ -3098,6 +3098,7 @@ main .main-content p.reminder a {
   }
 }
 
+
 .BackgroundPage {
   background: #e6e6e6;
   height: 90vh;
@@ -3117,7 +3118,7 @@ main .main-content p.reminder a {
   width: 65%;
   padding: 60px 45px 60px 90px;
   background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Space between pages */
 }
 
 /* RichTextEditor.css */
@@ -3147,14 +3148,4 @@ main .main-content p.reminder a {
   margin-top: 20px;
   border-top: 1px solid #ccc;
   padding-top: 10px;
-}
-
-.GetCode {
-  cursor: pointer;
-  transition: all 2s ease-in-out;
-}
-
-.GetCode:hover {
-  text-decoration: underline;
-  transition: all 2s ease-in-out;
 }

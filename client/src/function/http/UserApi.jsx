@@ -19,17 +19,17 @@ export const check = async () => {
     return jwtDecode(data.token);
 }
 
-export const getUser = async (id) => {
+export const getUser = async (id) =>{
     const { data } = await $authHost.get('api/user/get/' + id);
     return data
 }
 
-export const updateUser = async (datas) => {
+export const updateUser = async (datas) =>{
     const { data } = await $authHost.post('api/user/update', datas)
     return data
 }
 
-export const updateUserCompany = async (datas) => {
+export const updateUserCompany = async (datas) =>{
     const { data } = await $authHost.post('api/user/updatecompany', datas)
     return data
 }

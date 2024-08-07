@@ -104,7 +104,6 @@ const Home = observer(() => {
       localStorage.getItem("Language") === undefined ||
       localStorage.getItem("Language") === ""
     ) {
-      localStorage.setItem('Location', 'ContractView');
       localStorage.setItem("Language", "uz");
     } else {
       i18n.changeLanguage(localStorage.getItem("Language"));

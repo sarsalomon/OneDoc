@@ -13,9 +13,9 @@ const TemplateSchema = new Schema({
 const ContractSchema = new Schema({
     userId: {type: String},
     title: {type: String},
-    templateId: {type: String},
-    object: {type: String},
-    subject: {type: String},
+    contractTemplateId: {type: String},
+    contractObject: {type: String},
+    contractSubject: {type: String},
     type: {type: String},
     device: {type: String},
     image: {type: String},
@@ -25,7 +25,7 @@ const ContractSchema = new Schema({
 
 const AppealSchema = new Schema({
     userId: {type: String},
-    templateId: {type: String},
+    contractTemplateId: {type: String},
     userInfo: {type: String},
     status: {type: String}
 }, { timestamps: {createdAt: 'createDate', updatedAt: 'updateDate'} });

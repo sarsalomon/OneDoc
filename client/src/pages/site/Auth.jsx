@@ -37,7 +37,6 @@ const Auth = observer(() => {
                 if (user._user.role === 'Admin') {
                     navigate(ADMIN_DASHBOARD_ROUTE);
                 } else if (['User', 'Lawyer'].includes(user._user.role)) {
-                    localStorage.setItem('Location', 'ContractView')
                     navigate(USER_DASHBOARD_ROUTE);
                 }
             } else {
